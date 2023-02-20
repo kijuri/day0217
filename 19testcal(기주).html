@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19testcal.html</title>
+    <style>
+        #title {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function mycal() {
+            var data = '', info = '', msg = '';
+            var price1 = 0, Gdrink = 0, price2 = 0, Ganju = 0, Gtotal = 0;
+
+            var my_drink = document.myform.drink.value;
+            var num1 = document.myform.count1.value;
+            var my_anju = document.myform.anju.value;
+            var num2 = document.myform.count2.value;
+
+            if (my_drink == '소주') { price1 = 3000; }
+            else if (my_drink == '맥주') { price1 = 2000; }
+            else if (my_drink == '콜라') { price1 = 1000; }
+            else { }
+
+            if (my_anju == 'je6') { price2 = 8000; }
+            else if (my_anju == 'gol') { price2 = 7000; }
+            else if (my_anju == 'kimch') { price2 = 9000; }
+            else { }
+
+            Gdrink = parseInt(price1) * parseInt(num1);
+            Ganju = parseInt(price2) * parseInt(num2);
+
+            data = ' 음료:' + my_drink + '\t\t주문수량:' + num1 + '\t\t합계:' + Gdrink + '원\n';
+            data += ' 안주:' + my_anju + '\t\t주문수량:' + num2 + '\t\t합계:' + Ganju + '원\n';
+            data += ' 총합계:' + (Gdrink + Ganju) + '원';
+            document.myform.result.value = data;
+
+            info = ' 음료:' + my_drink + '주문수량:' + num1 + '합계:' + Gdrink + '원\<br>';
+            info += ' 안주:' + my_anju + '주문수량:' + num2 + '합계:' + Ganju + '원\<br>';
+            info += ' 총합계:' + (Gdrink + Ganju) + '원';
+            document.getElementById('display').innerHTML = info;
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <h2>
+        <font color="green">주문표</font>
+    </h2>
+    <form name="myform">
+        <table border="0">
+            <tr>
+                <td width="110">술종류</td>
+                <td width="170">갯수</td>
+                <td width="150">안주종류</td>
+                <td width="100">갯수</td>
+            </tr>
+        </table>
+        <div>
+            <select name="drink">
+                <option value="소주">Soju(3,000)</option>
+                <option value="맥주">Beer(2,000)</option>
+                <option value="콜라">Coke(1,000)</option>
+            </select>
+            <input type="number" name="count1">
+            <select name="anju">
+                <option value="je6">Je6(8,000)</option>
+                <option value="gol">gol(7,000)</option>
+                <option value="kimch">Kimch(9,000)</option>
+            </select>
+            <input type="number" name="count2">
+        </div>
+        <p></p>
+        <button onclick="mycal()">주문확인</button>
+        <p></p>
+        <textarea name="result" value="" id="" cols="86" rows="10"></textarea>
+        <div id="display"></div>
+    </form>
+</body>
+
+</html>
